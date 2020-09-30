@@ -1,0 +1,10 @@
+D:\ABRAZAWANIE\ComputerVision\Lab1\bin\Release\ColorCorrectionWinForms.exe.config
+D:\ABRAZAWANIE\ComputerVision\Lab1\bin\Release\ColorCorrectionWinForms.exe
+D:\ABRAZAWANIE\ComputerVision\Lab1\bin\Release\ColorCorrectionWinForms.pdb
+D:\ABRAZAWANIE\ComputerVision\Lab1\obj\Release\ColorCorrectionWinForms.csprojAssemblyReference.cache
+D:\ABRAZAWANIE\ComputerVision\Lab1\obj\Release\ColorCorrectionWinForms.ColorCorrectionForm.resources
+D:\ABRAZAWANIE\ComputerVision\Lab1\obj\Release\ColorCorrectionWinForms.Properties.Resources.resources
+D:\ABRAZAWANIE\ComputerVision\Lab1\obj\Release\ColorCorrectionWinForms.csproj.GenerateResource.cache
+D:\ABRAZAWANIE\ComputerVision\Lab1\obj\Release\ColorCorrectionWinForms.csproj.CoreCompileInputs.cache
+D:\ABRAZAWANIE\ComputerVision\Lab1\obj\Release\ColorCorrectionWinForms.exe
+D:\ABRAZAWANIE\ComputerVision\Lab1\obj\Release\ColorCorrectionWinForms.pdb

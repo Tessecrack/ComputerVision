@@ -1,0 +1,10 @@
+D:\ABRAZAWANIE\ComputerVision\Lab2\bin\Release\BinarizationImage.exe.config
+D:\ABRAZAWANIE\ComputerVision\Lab2\bin\Release\BinarizationImage.exe
+D:\ABRAZAWANIE\ComputerVision\Lab2\bin\Release\BinarizationImage.pdb
+D:\ABRAZAWANIE\ComputerVision\Lab2\obj\Release\BinarizationImage.csprojAssemblyReference.cache
+D:\ABRAZAWANIE\ComputerVision\Lab2\obj\Release\BinarizationImage.Form1.resources
+D:\ABRAZAWANIE\ComputerVision\Lab2\obj\Release\BinarizationImage.Properties.Resources.resources
+D:\ABRAZAWANIE\ComputerVision\Lab2\obj\Release\BinarizationImage.csproj.GenerateResource.cache
+D:\ABRAZAWANIE\ComputerVision\Lab2\obj\Release\BinarizationImage.csproj.CoreCompileInputs.cache
+D:\ABRAZAWANIE\ComputerVision\Lab2\obj\Release\BinarizationImage.exe
+D:\ABRAZAWANIE\ComputerVision\Lab2\obj\Release\BinarizationImage.pdb
