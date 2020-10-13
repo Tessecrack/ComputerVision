@@ -1,0 +1,209 @@
+﻿<Window x:Class="LuminanceConversion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LuminanceConversion"
+        WindowStartupLocation="CenterScreen"
+        mc:Ignorable="d"
+        Title="Luminance Conversion" Height="700" Width="900" MinHeight="650" MinWidth="650">
+    <Grid x:Name="MainGrid" Visibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FF230526" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.10*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="buttonClose" Background="Gray" BorderBrush="DarkMagenta" 
+                Grid.Column="2" Grid.Row="1"
+                Margin="0 0 5 5"
+                MinHeight="30" MinWidth="100"
+                MaxHeight="200" MaxWidth="300"
+                Content="Close" Width="Auto" Height="Auto"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <Button x:Name="buttonSaveImage" Background="Gray" BorderBrush="DarkMagenta"
+                Grid.Column="0" Grid.Row="1"
+                Margin="5 0 0 5"
+                MinHeight = "30" MinWidth="100"
+                MaxHeight="200" MaxWidth="300"
+                Content="Save image" Width="Auto" Height="Auto"
+                VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+
+        <Border BorderThickness="0.5" BorderBrush="Magenta">
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <Label x:Name="textForImage"
+                   Foreground="White" 
+                   MinHeight = "30" MinWidth="100"
+                   MaxHeight="200" MaxWidth="300"
+                   Width="Auto" Height="Auto"
+                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   Margin="0 5 0 0"
+                   >Source image</Label>
+                <Border BorderThickness="0.5" BorderBrush="Magenta"
+                    VerticalAlignment="Top">
+                    <Image x:Name ="imageBox"/>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <Border BorderThickness="0.5" BorderBrush="Magenta" Grid.Column="1">
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <Button x:Name="buttonUploadImage" Background="Gray" 
+                    BorderBrush="DarkMagenta"
+                    Width="Auto" Height="Auto"
+                    MinHeight="30" MinWidth="100"
+                    MaxHeight="20" MaxWidth="300"
+                    Margin="10 10 10 10"
+                    Content="Upload image"/>
+                <Button x:Name="buttonSourceImage" Background="Gray" BorderBrush="DarkMagenta"
+                    Width="Auto" Height="Auto"
+                    MinHeight="30" MinWidth="100"
+                    MaxHeight="20" MaxWidth="300"
+                    Margin="10 0 10 10"
+                    Content="Source image"/>
+                <Button x:Name="buttonGrayScaleImage" Background="Gray" BorderBrush="DarkMagenta"
+                    Width="Auto" Height="Auto"
+                    MinHeight="30" MinWidth="100"
+                    MaxHeight="20" MaxWidth="300"
+                    Margin="10 0 10 10"
+                    Content="Grayscale image"/>
+
+                <Border BorderThickness="0.9" BorderBrush="DarkMagenta">
+                    <StackPanel>
+                        <TextBlock Foreground="White" FontStyle="Italic" FontSize="20"
+                               TextDecorations="UnderLine" Margin="10 10 10 10">
+                        Reference color correction
+                        </TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="White" FontSize="15" Margin="10 0 0 0">
+                            Pixel:</TextBlock>
+                            <TextBlock Foreground="White" Margin="20 0 0 0" FontSize="15">
+                                (click on color pallete)
+                            </TextBlock>
+                        </StackPanel>
+                        <Button x:Name="buttonApplyColorCorrection" BorderBrush="DarkMagenta"
+                            Content="Apply"
+                            Margin="10 10 10 10"
+                            Background="Gray"
+                            Width="100" Height="20"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="0.9" BorderBrush="DarkMagenta">
+                    <StackPanel>
+                        <TextBlock Foreground="White" FontStyle="Italic" FontSize="20"
+                               TextDecorations="UnderLine" Margin="10 10 10 10">
+                        Gray world
+                        </TextBlock>
+                        <Button x:Name="buttonApplyGrayWorld" BorderBrush="DarkMagenta"
+                            Content="Apply"
+                            Margin="10 10 10 10"
+                            Background="Gray"
+                            Width="100" Height="20"/>
+                    </StackPanel>
+                </Border>
+
+                <StackPanel>
+                    <TextBlock Foreground="White" FontStyle="Italic" FontSize="20"
+                               TextDecorations="UnderLine" Margin="10 10 10 10">
+                        Basic luminance conversions
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="buttonLogarithm" BorderBrush="DarkMagenta"
+                            Content="Logarithm"
+                            Margin="10 10 10 10"
+                            Background="Gray"
+                            Width="100" Height="20"/>
+                        <TextBox x:Name="valuesLogarithm" Width="50" Height="20"
+                                     Margin="0 0 10 0">5 10</TextBox>
+                        <TextBlock Foreground="Gray" FontSize="15"  
+                                       Width="80" Height="20">
+                                : base coef
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="buttonDegree" BorderBrush="DarkMagenta"
+                            Content="Degree"
+                            Margin="10 10 10 10"
+                            Background="Gray"
+                            Width="100" Height="20"/>
+                        <TextBox x:Name="valuesDegree" Width="50" Height="20"
+                                     Margin="0 0 10 0">5 10</TextBox>
+                        <TextBlock Foreground="Gray" FontSize="15"  
+                                       Width="100" Height="20">
+                                : degree coef
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="buttonNegative" BorderBrush="DarkMagenta"
+                            Content="Negative"
+                            Margin="10 10 10 10"
+                            Background="Gray"
+                            Width="100" Height="20"/>
+                        <CheckBox Margin="10 10 10 10" Content="Anticonversion" Foreground="White"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Border BorderThickness="1" BorderBrush="DarkMagenta">
+                    <StackPanel>
+                        <Button x:Name="buttonNormalizationImage"
+                                Background="Gray" 
+                                BorderBrush="DarkMagenta"
+                                Width="Auto" Height="Auto"
+                                MinHeight="30" MinWidth="100"
+                                MaxHeight="20" MaxWidth="300"
+                                Margin="10 10 10 10"
+                                Content="Normalization image"/>
+
+                        <Button x:Name="buttonEqualizationImage"
+                                Background="Gray" BorderBrush="DarkMagenta"
+                                Width="Auto" Height="Auto"
+                                MinHeight="30" MinWidth="100"
+                                MaxHeight="20" MaxWidth="300"
+                                Margin="10 0 10 10"
+                                Content="Equalization image"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </Border>
+        <Border BorderThickness="1" BorderBrush="DarkMagenta" Grid.Column="2">
+            <StackPanel Grid.Row="0" Grid.Column="2">
+                <Label x:Name="colorPallete"
+                   Foreground="White" 
+                   MinHeight = "30" MinWidth="100"
+                   MaxHeight="200" MaxWidth="300"
+                   Width="Auto" Height="Auto"
+                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   Margin="0 5 0 0"
+                   >Color pallete</Label>
+                <Border BorderThickness="0.5" BorderBrush="Magenta">
+                    <Image Source="Resources/colorPallete.jpg" Margin="0 10 0 0" />
+                </Border>
+                <Label x:Name="hystogram"
+                   Foreground="White" 
+                   MinHeight = "30" MinWidth="100"
+                   MaxHeight="200" MaxWidth="300"
+                   Width="Auto" Height="Auto"
+                   VerticalAlignment="Top" HorizontalAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   Margin="0 5 0 0"
+                   >Histogram</Label>
+                <Border BorderThickness="0.5" BorderBrush="Magenta">
+                    <Image Width="Auto" Height="Auto"/>
+                </Border>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
