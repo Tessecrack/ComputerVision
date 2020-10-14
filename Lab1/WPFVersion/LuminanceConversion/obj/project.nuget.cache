@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YnRWhUvN7SQdXS/fIaRK+kp9TlR+VybsX9Xvd4DGX+ITik/YKCXh69lqlZ+Zj9gmqCX63ZJ8PymJaz3X5EPi3g==",
+  "dgSpecHash": "5gq5QWV1oAMu5wss21QqUZpNSi+6Vj/HWGxj62QvylgJ3Uj+sD6xoQG+iBpIs6hH6cH8el9J8oOypwpEmVsWPA==",
   "success": true,
-  "projectFilePath": "D:\\ABRAZAWANIE\\ComputerVision\\WPFVersion\\LuminanceConversion\\LuminanceConversion.csproj",
+  "projectFilePath": "D:\\ABRAZAWANIE\\ComputerVisionWPF\\LuminanceConversion\\LuminanceConversion.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

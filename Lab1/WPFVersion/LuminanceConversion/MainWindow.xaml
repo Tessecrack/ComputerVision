@@ -15,32 +15,34 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="43*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="50*"/>
+            <ColumnDefinition Width="50*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="0.10*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="buttonClose" Background="Gray" BorderBrush="DarkMagenta" 
-                Grid.Column="2" Grid.Row="1"
-                Margin="0 0 5 5"
+        <Button x:Name="ButtonClose" Background="Gray" BorderBrush="DarkMagenta" 
+                Grid.Column="3" Grid.Row="1"
+                Margin="0,27,5,0"
                 MinHeight="30" MinWidth="100"
                 MaxHeight="200" MaxWidth="300"
                 Content="Close" Width="Auto" Height="Auto"
-                VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
-        <Button x:Name="buttonSaveImage" Background="Gray" BorderBrush="DarkMagenta"
+                VerticalAlignment="Top" HorizontalAlignment="Right" 
+                Click="ButtonClose_Click"/>
+        <Button x:Name="ButtonSaveImage" Background="Gray" BorderBrush="DarkMagenta"
                 Grid.Column="0" Grid.Row="1"
                 Margin="5 0 0 5"
                 MinHeight = "30" MinWidth="100"
                 MaxHeight="200" MaxWidth="300"
                 Content="Save image" Width="Auto" Height="Auto"
-                VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="ButtonSaveImage_Click"/>
 
-        <Border BorderThickness="0.5" BorderBrush="Magenta">
+        <Border BorderThickness="0.5" BorderBrush="Magenta" Grid.ColumnSpan="2" Margin="0,0,0,62" Grid.RowSpan="2">
             <StackPanel Grid.Row="0" Grid.Column="0">
-                <Label x:Name="textForImage"
+                <Label x:Name="TextForImage"
                    Foreground="White" 
                    MinHeight = "30" MinWidth="100"
                    MaxHeight="200" MaxWidth="300"
@@ -51,32 +53,32 @@
                    >Source image</Label>
                 <Border BorderThickness="0.5" BorderBrush="Magenta"
                     VerticalAlignment="Top">
-                    <Image x:Name ="imageBox"/>
+                    <Image x:Name ="ImageBox" Source="{Binding Path=LoadImage}"/>
                 </Border>
             </StackPanel>
         </Border>
 
-        <Border BorderThickness="0.5" BorderBrush="Magenta" Grid.Column="1">
+        <Border BorderThickness="0.5" BorderBrush="Magenta" Grid.Column="2" Margin="0,0,0,62" Grid.RowSpan="2">
             <StackPanel Grid.Row="0" Grid.Column="1">
-                <Button x:Name="buttonUploadImage" Background="Gray" 
+                <Button x:Name="ButtonUploadImage" Background="Gray" 
                     BorderBrush="DarkMagenta"
                     Width="Auto" Height="Auto"
                     MinHeight="30" MinWidth="100"
                     MaxHeight="20" MaxWidth="300"
                     Margin="10 10 10 10"
-                    Content="Upload image"/>
-                <Button x:Name="buttonSourceImage" Background="Gray" BorderBrush="DarkMagenta"
+                    Content="Upload image" Click="ButtonUploadImage_Click"/>
+                <Button x:Name="ButtonSourceImage" Background="Gray" BorderBrush="DarkMagenta"
                     Width="Auto" Height="Auto"
                     MinHeight="30" MinWidth="100"
                     MaxHeight="20" MaxWidth="300"
                     Margin="10 0 10 10"
-                    Content="Source image"/>
-                <Button x:Name="buttonGrayScaleImage" Background="Gray" BorderBrush="DarkMagenta"
+                    Content="Source image" Click="ButtonSourceImage_Click"/>
+                <Button x:Name="ButtonGrayScaleImage" Background="Gray" BorderBrush="DarkMagenta"
                     Width="Auto" Height="Auto"
                     MinHeight="30" MinWidth="100"
                     MaxHeight="20" MaxWidth="300"
                     Margin="10 0 10 10"
-                    Content="Grayscale image"/>
+                    Content="Grayscale image" Click="ButtonGrayScaleImage_Click"/>
 
                 <Border BorderThickness="0.9" BorderBrush="DarkMagenta">
                     <StackPanel>
@@ -91,7 +93,7 @@
                                 (click on color pallete)
                             </TextBlock>
                         </StackPanel>
-                        <Button x:Name="buttonApplyColorCorrection" BorderBrush="DarkMagenta"
+                        <Button x:Name="ButtonApplyColorCorrection" BorderBrush="DarkMagenta"
                             Content="Apply"
                             Margin="10 10 10 10"
                             Background="Gray"
@@ -105,11 +107,11 @@
                                TextDecorations="UnderLine" Margin="10 10 10 10">
                         Gray world
                         </TextBlock>
-                        <Button x:Name="buttonApplyGrayWorld" BorderBrush="DarkMagenta"
+                        <Button x:Name="ButtonApplyGrayWorld" BorderBrush="DarkMagenta"
                             Content="Apply"
                             Margin="10 10 10 10"
                             Background="Gray"
-                            Width="100" Height="20"/>
+                            Width="100" Height="20" Click="ButtonApplyGrayWorld_Click"/>
                     </StackPanel>
                 </Border>
 
@@ -123,7 +125,7 @@
                             Content="Logarithm"
                             Margin="10 10 10 10"
                             Background="Gray"
-                            Width="100" Height="20"/>
+                            Width="100" Height="20" Click="buttonLogarithm_Click"/>
                         <TextBox x:Name="valuesLogarithm" Width="50" Height="20"
                                      Margin="0 0 10 0">5 10</TextBox>
                         <TextBlock Foreground="Gray" FontSize="15"  
@@ -132,11 +134,11 @@
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
-                        <Button x:Name="buttonDegree" BorderBrush="DarkMagenta"
+                        <Button x:Name="ButtonDegree" BorderBrush="DarkMagenta"
                             Content="Degree"
                             Margin="10 10 10 10"
                             Background="Gray"
-                            Width="100" Height="20"/>
+                            Width="100" Height="20" Click="ButtonDegree_Click"/>
                         <TextBox x:Name="valuesDegree" Width="50" Height="20"
                                      Margin="0 0 10 0">5 10</TextBox>
                         <TextBlock Foreground="Gray" FontSize="15"  
@@ -149,14 +151,14 @@
                             Content="Negative"
                             Margin="10 10 10 10"
                             Background="Gray"
-                            Width="100" Height="20"/>
+                            Width="100" Height="20" Click="buttonNegative_Click"/>
                         <CheckBox Margin="10 10 10 10" Content="Anticonversion" Foreground="White"/>
                     </StackPanel>
                 </StackPanel>
 
                 <Border BorderThickness="1" BorderBrush="DarkMagenta">
                     <StackPanel>
-                        <Button x:Name="buttonNormalizationImage"
+                        <Button x:Name="ButtonNormalizationImage"
                                 Background="Gray" 
                                 BorderBrush="DarkMagenta"
                                 Width="Auto" Height="Auto"
@@ -165,7 +167,7 @@
                                 Margin="10 10 10 10"
                                 Content="Normalization image"/>
 
-                        <Button x:Name="buttonEqualizationImage"
+                        <Button x:Name="ButtonEqualizationImage"
                                 Background="Gray" BorderBrush="DarkMagenta"
                                 Width="Auto" Height="Auto"
                                 MinHeight="30" MinWidth="100"
@@ -174,12 +176,12 @@
                                 Content="Equalization image"/>
                     </StackPanel>
                 </Border>
-
             </StackPanel>
         </Border>
-        <Border BorderThickness="1" BorderBrush="DarkMagenta" Grid.Column="2">
+
+        <Border BorderThickness="1" BorderBrush="DarkMagenta" Grid.Column="3" Margin="0,0,0,62" Grid.RowSpan="2">
             <StackPanel Grid.Row="0" Grid.Column="2">
-                <Label x:Name="colorPallete"
+                <Label x:Name="NameColorPallete"
                    Foreground="White" 
                    MinHeight = "30" MinWidth="100"
                    MaxHeight="200" MaxWidth="300"
@@ -189,7 +191,7 @@
                    Margin="0 5 0 0"
                    >Color pallete</Label>
                 <Border BorderThickness="0.5" BorderBrush="Magenta">
-                    <Image Source="Resources/colorPallete.jpg" Margin="0 10 0 0" />
+                    <Image x:Name ="ColorPalleteImage" Source="Resources/colorPallete.jpg" Margin="0 10 0 0" />
                 </Border>
                 <Label x:Name="hystogram"
                    Foreground="White" 

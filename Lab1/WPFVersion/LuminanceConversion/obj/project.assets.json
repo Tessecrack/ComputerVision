@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ABRAZAWANIE\\ComputerVision\\WPFVersion\\LuminanceConversion\\LuminanceConversion.csproj",
+      "projectUniqueName": "D:\\ABRAZAWANIE\\ComputerVisionWPF\\LuminanceConversion\\LuminanceConversion.csproj",
       "projectName": "LuminanceConversion",
-      "projectPath": "D:\\ABRAZAWANIE\\ComputerVision\\WPFVersion\\LuminanceConversion\\LuminanceConversion.csproj",
+      "projectPath": "D:\\ABRAZAWANIE\\ComputerVisionWPF\\LuminanceConversion\\LuminanceConversion.csproj",
       "packagesPath": "C:\\Users\\Мвидео\\.nuget\\packages\\",
-      "outputPath": "D:\\ABRAZAWANIE\\ComputerVision\\WPFVersion\\LuminanceConversion\\obj\\",
+      "outputPath": "D:\\ABRAZAWANIE\\ComputerVisionWPF\\LuminanceConversion\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
