@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:LuminanceConversion"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
@@ -53,7 +54,7 @@
                    >Source image</Label>
                 <Border BorderThickness="0.5" BorderBrush="Magenta"
                     VerticalAlignment="Top">
-                    <Image x:Name ="ImageBox" Source="{Binding Path=LoadImage}"/>
+                    <Image x:Name ="ImageBox" Source="{Binding Path=LoadImage}" MouseLeftButtonDown="ImageBox_MouseLeftButtonDown"/>
                 </Border>
             </StackPanel>
         </Border>
@@ -88,16 +89,23 @@
                         </TextBlock>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Foreground="White" FontSize="15" Margin="10 0 0 0">
-                            Pixel:</TextBlock>
-                            <TextBlock Foreground="White" Margin="20 0 0 0" FontSize="15">
+                            Pixel (color picker):</TextBlock>
+                            <TextBlock x:Name="PixelFromPallete" Foreground="White" Margin="10 0 0 0" FontSize="15">
                                 (click on color pallete)
                             </TextBlock>
                         </StackPanel>
-                        <Button x:Name="ButtonApplyColorCorrection" BorderBrush="DarkMagenta"
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Foreground="White" FontSize="15" Margin="10 0 0 0">
+                            Pixel (color image):</TextBlock>
+                            <TextBlock x:Name="PixelFromImage" Foreground="White" Margin="10 0 0 0" FontSize="15">
+                                (click on image)
+                            </TextBlock>
+                        </StackPanel>
+                                <Button x:Name="ButtonApplyColorCorrection" BorderBrush="DarkMagenta"
                             Content="Apply"
                             Margin="10 10 10 10"
                             Background="Gray"
-                            Width="100" Height="20"/>
+                            Width="100" Height="20" Click="ButtonApplyColorCorrection_Click"/>
                     </StackPanel>
                 </Border>
 
@@ -191,7 +199,8 @@
                    Margin="0 5 0 0"
                    >Color pallete</Label>
                 <Border BorderThickness="0.5" BorderBrush="Magenta">
-                    <Image x:Name ="ColorPalleteImage" Source="Resources/colorPallete.jpg" Margin="0 10 0 0" />
+                    <Image x:Name ="ColorPalleteImage" Source="Resources/colorPallete.jpg" Margin="0 10 0 0"
+                           MouseLeftButtonDown="ColorPalleteImage_MouseLeftButtonDown" />
                 </Border>
                 <Label x:Name="hystogram"
                    Foreground="White" 

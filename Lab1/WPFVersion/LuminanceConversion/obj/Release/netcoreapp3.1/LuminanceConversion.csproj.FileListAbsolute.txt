@@ -17,3 +17,4 @@ D:\ABRAZAWANIE\ComputerVisionWPF\LuminanceConversion\obj\Release\netcoreapp3.1\L
 D:\ABRAZAWANIE\ComputerVisionWPF\LuminanceConversion\obj\Release\netcoreapp3.1\LuminanceConversion.dll
 D:\ABRAZAWANIE\ComputerVisionWPF\LuminanceConversion\obj\Release\netcoreapp3.1\LuminanceConversion.pdb
 D:\ABRAZAWANIE\ComputerVisionWPF\LuminanceConversion\obj\Release\netcoreapp3.1\LuminanceConversion.genruntimeconfig.cache
+D:\ABRAZAWANIE\ComputerVisionWPF\LuminanceConversion\obj\Release\netcoreapp3.1\LuminanceConversion.csprojAssemblyReference.cache

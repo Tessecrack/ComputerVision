@@ -15,19 +15,28 @@ namespace LuminanceConversion.Models
         public byte[] GrayscaleImageArray { get; set; } //+
         public byte[] GrayWorldImageArray { get; set; } //+
         public byte[] NegativeImageArray { get; set; } //+
+        public byte[] ReferenceColorImageArray { get; set; } //- 
         public byte[] NormalizationImageArray { get; set; } //-
         public byte[] EqualizationImageArray { get; set; } //-
 
-        public void ConvertSourceImageToPixelArray()
+        public byte ReferenceColorR = 0;
+        public byte ReferenceColorG = 0;
+        public byte ReferenceColorB = 0;
+
+        public byte SourceColorR = 0;
+        public byte SourceColorG = 0;
+        public byte SourceColorB = 0;
+
+        public void ConvertSourceImageToPixelArray(BitmapSource loadImage)
         {
-            if (LoadImage.Format != PixelFormats.Bgra32)
-                LoadImage = new FormatConvertedBitmap(LoadImage, PixelFormats.Bgra32, null, 0);
-            int height = LoadImage.PixelHeight;
-            int width =  LoadImage.PixelWidth;
+            if (loadImage.Format != PixelFormats.Bgra32)
+                loadImage = new FormatConvertedBitmap(LoadImage, PixelFormats.Bgra32, null, 0);
+            int height = loadImage.PixelHeight;
+            int width =  loadImage.PixelWidth;
             SourceImageArray = new byte[width * height * 4];
-            LoadImage.CopyPixels(SourceImageArray, width * 4, 0);
-            ConvertImageToArrays();
+            loadImage.CopyPixels(SourceImageArray, width * 4, 0);
         }
+
         public WriteableBitmap GetWriteableBitmap(byte[] arrayImage)
         {
             var writeBitmap = new WriteableBitmap(LoadImage);
@@ -39,6 +48,7 @@ namespace LuminanceConversion.Models
 
         public byte[] GetLogarithmImage(int baseLog, int coefLog)
         {
+            if (LoadImage == null || SourceImageArray == null) return null;
             var logImageArray = new byte[SourceImageArray.Length];
             for (int i = 0; i < logImageArray.Length; i += 4)
             {
@@ -50,8 +60,27 @@ namespace LuminanceConversion.Models
 
         }
 
+        public byte[] GetRefernceColorCorrection()
+        {
+            if (SourceImageArray == null || LoadImage == null) return null;
+            ReferenceColorImageArray = new byte[SourceImageArray.Length];
+            for (int i = 0; i < ReferenceColorImageArray.Length; i += 4) 
+            {
+                double bTemp = SourceImageArray[i] * (ReferenceColorB / SourceColorB + 1);
+                double gTemp = SourceImageArray[i + 1] * (ReferenceColorG / SourceColorG + 1);
+                double rTemp = SourceImageArray[i + 2] * (ReferenceColorR / SourceColorR + 1);
+
+                ReferenceColorImageArray[i] = CutPixel(bTemp);
+                ReferenceColorImageArray[i + 1] = CutPixel(gTemp);
+                ReferenceColorImageArray[i + 2] = CutPixel(rTemp);
+                ReferenceColorImageArray[i + 3] = SourceImageArray[i + 3];
+            }
+            return ReferenceColorImageArray;
+        }
+
         public byte[] GetDegreeImage(int degree, int coef)
         {
+            if (LoadImage == null || SourceImageArray == null) return null;
             var degreeImageArray = new byte[SourceImageArray.Length];
             for (int i = 0; i < degreeImageArray.Length; i += 4) 
             {
@@ -67,7 +96,7 @@ namespace LuminanceConversion.Models
             return degreeImageArray;
         }
 
-        private void ConvertImageToArrays() //Gray, Negative, GrayWorld
+        public void ConvertImageToArrays() //Gray, Negative, GrayWorld
         {
             if (SourceImageArray == null) return;
             GrayscaleImageArray = new byte[SourceImageArray.Length];
@@ -106,6 +135,13 @@ namespace LuminanceConversion.Models
                 GrayWorldImageArray[i + 2] = r;
                 GrayWorldImageArray[i + 3] = SourceImageArray[i + 3];
             }
+        }
+
+        private byte CutPixel(double pixel)
+        {
+            if (pixel > 255) return 255;
+            else if (pixel < 0) return 0;
+            return (byte)pixel;
         }
     }
 }

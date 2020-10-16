@@ -47,7 +47,8 @@ namespace LuminanceConversion
                 Uri uri = new Uri(lumConModel.Name);
                 lumConModel.LoadImage = new BitmapImage(uri);
                 ImageBox.Source = lumConModel.LoadImage;
-                lumConModel.ConvertSourceImageToPixelArray();
+                lumConModel.ConvertSourceImageToPixelArray(lumConModel.LoadImage);
+                lumConModel.ConvertImageToArrays();
             }
         }
 
@@ -65,9 +66,15 @@ namespace LuminanceConversion
         {
             HelperSetArrayInImageBox(lumConModel.NegativeImageArray);
         }
+
         private void ButtonApplyGrayWorld_Click(object sender, RoutedEventArgs e)
         {
             HelperSetArrayInImageBox(lumConModel.GrayWorldImageArray);
+        }
+
+        private void ButtonApplyColorCorrection_Click(object sender, RoutedEventArgs e)
+        {
+            HelperSetArrayInImageBox(lumConModel.GetRefernceColorCorrection());
         }
 
         private void buttonLogarithm_Click(object sender, RoutedEventArgs e)
@@ -90,12 +97,45 @@ namespace LuminanceConversion
             HelperSetArrayInImageBox(lumConModel.GetDegreeImage(degree, coef));
         }
 
+        private void ColorPalleteImage_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var point = e.GetPosition((IInputElement)e.Source);
+            HelperForRefernceColorCorrectionImage((BitmapSource)ColorPalleteImage.Source, point, 
+                ref lumConModel.ReferenceColorB, 
+                ref lumConModel.ReferenceColorG, 
+                ref lumConModel.ReferenceColorR);
+            PixelFromPallete.Text = String.Format("R:{0}, G:{1}, B:{2}", lumConModel.ReferenceColorR, lumConModel.ReferenceColorG, lumConModel.ReferenceColorB);
+        }
+        private void ImageBox_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var point = e.GetPosition((IInputElement)e.Source);
+            HelperForRefernceColorCorrectionImage((BitmapSource)ImageBox.Source, point,
+                ref lumConModel.SourceColorB,
+                ref lumConModel.SourceColorG,
+                ref lumConModel.SourceColorR);
+            PixelFromImage.Text = String.Format("R:{0}, G:{1}, B:{2}", lumConModel.SourceColorR, lumConModel.SourceColorG, lumConModel.SourceColorB);
+        }
+
         /*---HELPERS---*/
 
         private void HelperSetArrayInImageBox(byte[] arrayImage)
         {
-            if (lumConModel.LoadImage == null || lumConModel.SourceImageArray == null) return;
+            if (lumConModel.LoadImage == null || lumConModel.SourceImageArray == null || arrayImage == null) return;
             ImageBox.Source = lumConModel.GetWriteableBitmap(arrayImage);
+        }
+
+        private void HelperForRefernceColorCorrectionImage(BitmapSource bitmap, Point point, ref byte b, ref byte g, ref byte r)
+        {
+            var width = bitmap.PixelWidth;
+            var height = bitmap.PixelHeight;
+            if (bitmap.Format != PixelFormats.Bgra32)
+                bitmap = new FormatConvertedBitmap(bitmap, PixelFormats.Bgra32, null, 0);
+            byte[] arrayImage = new byte[width * height * 4];
+            bitmap.CopyPixels(arrayImage, width * 4, 0);
+            int index = (int)point.Y * height + (int)point.X * 4;
+            b = arrayImage[index];
+            g = arrayImage[index + 1];
+            r = arrayImage[index + 2];
         }
     }
 }
