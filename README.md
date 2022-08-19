@@ -14,7 +14,7 @@
 	- Нормализация гистограммы
 	- Эквализация гистограммы  
 	
-![Screenshot](Lab1/WPFVersion1.png)	  
+![Screenshot](Lab1/WinForms.png)	  
   
 ## Lab02 (C# (Versions: WinForms, WPF))
 
